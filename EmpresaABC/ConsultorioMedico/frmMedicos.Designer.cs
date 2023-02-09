@@ -1,7 +1,7 @@
 ﻿
 namespace ConsultorioMedico
 {
-    partial class frmConsulta
+    partial class frmMedicos
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace ConsultorioMedico
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConsulta));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMedicos));
             this.pnlConsulta = new System.Windows.Forms.Panel();
             this.btnVoltar = new System.Windows.Forms.Button();
             this.btnPesquisar = new System.Windows.Forms.Button();
@@ -49,7 +49,7 @@ namespace ConsultorioMedico
             this.pnlConsulta.Location = new System.Drawing.Point(2, 485);
             this.pnlConsulta.Name = "pnlConsulta";
             this.pnlConsulta.Size = new System.Drawing.Size(778, 72);
-            this.pnlConsulta.TabIndex = 0;
+            this.pnlConsulta.TabIndex = 1;
             // 
             // btnVoltar
             // 
@@ -112,7 +112,7 @@ namespace ConsultorioMedico
             this.btnCadastrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCadastrar.UseVisualStyleBackColor = true;
             // 
-            // frmConsulta
+            // frmMedicos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -121,10 +121,10 @@ namespace ConsultorioMedico
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "frmConsulta";
+            this.Name = "frmMedicos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consultório Médico";
-            this.Load += new System.EventHandler(this.frmConsulta_Load);
+            this.Load += new System.EventHandler(this.frmMedicos_Load);
             this.pnlConsulta.ResumeLayout(false);
             this.ResumeLayout(false);
 
