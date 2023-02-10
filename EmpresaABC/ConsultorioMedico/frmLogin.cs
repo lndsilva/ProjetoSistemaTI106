@@ -40,7 +40,6 @@ namespace ConsultorioMedico
                 frmMenuPrincipal abrir = new frmMenuPrincipal();
                 abrir.Show();
                 this.Hide();
-
             }
             else
             {
@@ -74,7 +73,7 @@ namespace ConsultorioMedico
 
         private void txtUsuario_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode ==  Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 txtSenha.Focus();
             }

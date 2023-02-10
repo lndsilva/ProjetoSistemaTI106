@@ -39,6 +39,26 @@ namespace ConsultorioMedico
             IntPtr hMenu = GetSystemMenu(this.Handle, false);
             int MenuCount = GetMenuItemCount(hMenu) - 1;
             RemoveMenu(hMenu, MenuCount, MF_BYCOMMAND);
+            //executando o método carrega especialidades
+            carregaCombo();
+            
+        }
+
+        //criando o método carrega especialidades
+        public void carregaCombo()
+        {
+            cbbEspecialidades.Items.Add("Clinica Médica");
+            cbbEspecialidades.Items.Add("Cardiologista");
+            cbbEspecialidades.Items.Add("Pediatria");
+            cbbEspecialidades.Items.Add("Psiquiatria");
+            cbbEspecialidades.Items.Add("Urologia");
+        }
+
+        private void btnCadEsp_Click(object sender, EventArgs e)
+        {
+            frmEspecialidades abrir = new frmEspecialidades();
+            abrir.ShowDialog();         
+
         }
     }
 }
