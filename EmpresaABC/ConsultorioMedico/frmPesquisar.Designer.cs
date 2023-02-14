@@ -31,11 +31,11 @@ namespace ConsultorioMedico
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPesquisar));
             this.gpbPesquisar = new System.Windows.Forms.GroupBox();
-            this.rdbCodigo = new System.Windows.Forms.RadioButton();
-            this.rdbNome = new System.Windows.Forms.RadioButton();
-            this.lblDescricao = new System.Windows.Forms.Label();
             this.txtDescricao = new System.Windows.Forms.TextBox();
-            this.ltbtensPesquisados = new System.Windows.Forms.ListBox();
+            this.lblDescricao = new System.Windows.Forms.Label();
+            this.rdbNome = new System.Windows.Forms.RadioButton();
+            this.rdbCodigo = new System.Windows.Forms.RadioButton();
+            this.ltbItensPesquisados = new System.Windows.Forms.ListBox();
             this.btnPesquisar = new System.Windows.Forms.Button();
             this.btnLimpar = new System.Windows.Forms.Button();
             this.gpbPesquisar.SuspendLayout();
@@ -55,27 +55,12 @@ namespace ConsultorioMedico
             this.gpbPesquisar.TabStop = false;
             this.gpbPesquisar.Text = "Pesquisar por:";
             // 
-            // rdbCodigo
+            // txtDescricao
             // 
-            this.rdbCodigo.AutoSize = true;
-            this.rdbCodigo.Location = new System.Drawing.Point(42, 44);
-            this.rdbCodigo.Name = "rdbCodigo";
-            this.rdbCodigo.Size = new System.Drawing.Size(77, 24);
-            this.rdbCodigo.TabIndex = 0;
-            this.rdbCodigo.TabStop = true;
-            this.rdbCodigo.Text = "Código";
-            this.rdbCodigo.UseVisualStyleBackColor = true;
-            // 
-            // rdbNome
-            // 
-            this.rdbNome.AutoSize = true;
-            this.rdbNome.Location = new System.Drawing.Point(200, 44);
-            this.rdbNome.Name = "rdbNome";
-            this.rdbNome.Size = new System.Drawing.Size(69, 24);
-            this.rdbNome.TabIndex = 1;
-            this.rdbNome.TabStop = true;
-            this.rdbNome.Text = "Nome";
-            this.rdbNome.UseVisualStyleBackColor = true;
+            this.txtDescricao.Location = new System.Drawing.Point(124, 91);
+            this.txtDescricao.Name = "txtDescricao";
+            this.txtDescricao.Size = new System.Drawing.Size(382, 26);
+            this.txtDescricao.TabIndex = 3;
             // 
             // lblDescricao
             // 
@@ -86,37 +71,58 @@ namespace ConsultorioMedico
             this.lblDescricao.TabIndex = 2;
             this.lblDescricao.Text = "Descrição";
             // 
-            // txtDescricao
+            // rdbNome
             // 
-            this.txtDescricao.Location = new System.Drawing.Point(124, 91);
-            this.txtDescricao.Name = "txtDescricao";
-            this.txtDescricao.Size = new System.Drawing.Size(382, 26);
-            this.txtDescricao.TabIndex = 3;
+            this.rdbNome.AutoSize = true;
+            this.rdbNome.Location = new System.Drawing.Point(200, 44);
+            this.rdbNome.Name = "rdbNome";
+            this.rdbNome.Size = new System.Drawing.Size(69, 24);
+            this.rdbNome.TabIndex = 2;
+            this.rdbNome.TabStop = true;
+            this.rdbNome.Text = "Nome";
+            this.rdbNome.UseVisualStyleBackColor = true;
             // 
-            // ltbtensPesquisados
+            // rdbCodigo
             // 
-            this.ltbtensPesquisados.FormattingEnabled = true;
-            this.ltbtensPesquisados.Location = new System.Drawing.Point(29, 163);
-            this.ltbtensPesquisados.Name = "ltbtensPesquisados";
-            this.ltbtensPesquisados.Size = new System.Drawing.Size(515, 147);
-            this.ltbtensPesquisados.TabIndex = 1;
+            this.rdbCodigo.AutoSize = true;
+            this.rdbCodigo.Location = new System.Drawing.Point(42, 44);
+            this.rdbCodigo.Name = "rdbCodigo";
+            this.rdbCodigo.Size = new System.Drawing.Size(77, 24);
+            this.rdbCodigo.TabIndex = 1;
+            this.rdbCodigo.TabStop = true;
+            this.rdbCodigo.Text = "Código";
+            this.rdbCodigo.UseVisualStyleBackColor = true;
+            // 
+            // ltbItensPesquisados
+            // 
+            this.ltbItensPesquisados.FormattingEnabled = true;
+            this.ltbItensPesquisados.Location = new System.Drawing.Point(29, 163);
+            this.ltbItensPesquisados.Name = "ltbItensPesquisados";
+            this.ltbItensPesquisados.Size = new System.Drawing.Size(515, 147);
+            this.ltbItensPesquisados.TabIndex = 4;
             // 
             // btnPesquisar
             // 
+            this.btnPesquisar.Image = ((System.Drawing.Image)(resources.GetObject("btnPesquisar.Image")));
             this.btnPesquisar.Location = new System.Drawing.Point(562, 12);
             this.btnPesquisar.Name = "btnPesquisar";
             this.btnPesquisar.Size = new System.Drawing.Size(148, 145);
-            this.btnPesquisar.TabIndex = 2;
+            this.btnPesquisar.TabIndex = 5;
             this.btnPesquisar.Text = "Pesquisar";
+            this.btnPesquisar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnPesquisar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnPesquisar.UseVisualStyleBackColor = true;
             // 
             // btnLimpar
             // 
+            this.btnLimpar.Image = ((System.Drawing.Image)(resources.GetObject("btnLimpar.Image")));
             this.btnLimpar.Location = new System.Drawing.Point(562, 163);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(148, 145);
-            this.btnLimpar.TabIndex = 3;
+            this.btnLimpar.TabIndex = 6;
             this.btnLimpar.Text = "Limpar";
+            this.btnLimpar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnLimpar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnLimpar.UseVisualStyleBackColor = true;
             // 
             // frmPesquisar
@@ -126,7 +132,7 @@ namespace ConsultorioMedico
             this.ClientSize = new System.Drawing.Size(722, 327);
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.btnPesquisar);
-            this.Controls.Add(this.ltbtensPesquisados);
+            this.Controls.Add(this.ltbItensPesquisados);
             this.Controls.Add(this.gpbPesquisar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -147,7 +153,7 @@ namespace ConsultorioMedico
         private System.Windows.Forms.Label lblDescricao;
         private System.Windows.Forms.RadioButton rdbNome;
         private System.Windows.Forms.RadioButton rdbCodigo;
-        private System.Windows.Forms.ListBox ltbtensPesquisados;
+        private System.Windows.Forms.ListBox ltbItensPesquisados;
         private System.Windows.Forms.Button btnPesquisar;
         private System.Windows.Forms.Button btnLimpar;
     }
