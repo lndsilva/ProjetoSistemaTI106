@@ -17,3 +17,4 @@ C:\Users\laercio.nsilva\Documents\Visual Studio 2019\ProjetoSistemaTI106\Empresa
 C:\Users\laercio.nsilva\Documents\Visual Studio 2019\ProjetoSistemaTI106\EmpresaABC\ConsultorioMedico\obj\Debug\ConsultorioMedico.csproj.CoreCompileInputs.cache
 C:\Users\laercio.nsilva\Documents\Visual Studio 2019\ProjetoSistemaTI106\EmpresaABC\ConsultorioMedico\obj\Debug\ConsultorioMedico.exe
 C:\Users\laercio.nsilva\Documents\Visual Studio 2019\ProjetoSistemaTI106\EmpresaABC\ConsultorioMedico\obj\Debug\ConsultorioMedico.pdb
+C:\Users\laercio.nsilva\Documents\Visual Studio 2019\ProjetoSistemaTI106\EmpresaABC\ConsultorioMedico\obj\Debug\ConsultorioMedico.csproj.AssemblyReference.cache

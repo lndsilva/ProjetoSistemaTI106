@@ -35,11 +35,32 @@ namespace ConsultorioMedico
             mskCPF.Enabled = false;
             mskTelefone.Enabled = false;
             cbbEstado.Enabled = false;
+            btnCadastrar.Enabled = false;
+            btnAlterar.Enabled = false;
+            btnExcluir.Enabled = false;
+            btnLimpar.Enabled = false;
+        }
+
+        public void habilitarCampos()
+        {            
+            txtNome.Enabled = true;
+            txtBairro.Enabled = true;
+            txtCidade.Enabled = true;
+            txtEmail.Enabled = true;
+            txtEndereco.Enabled = true;
+            mskCEP.Enabled = true;
+            mskCPF.Enabled = true;
+            mskTelefone.Enabled = true;
+            cbbEstado.Enabled = true;
+            btnCadastrar.Enabled = true;
+            btnLimpar.Enabled = true;
+            txtNome.Focus();
         }
 
         public frmPacientes()
         {
             InitializeComponent();
+            desabilitarCampos();
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -55,6 +76,11 @@ namespace ConsultorioMedico
             int MenuCount = GetMenuItemCount(hMenu) - 1;
             RemoveMenu(hMenu, MenuCount, MF_BYCOMMAND);
 
+        }
+
+        private void btnNovo_Click(object sender, EventArgs e)
+        {
+            habilitarCampos();
         }
     }
 }

@@ -57,16 +57,16 @@ namespace ConsultorioMedico
             this.label6 = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.mskCEP = new System.Windows.Forms.MaskedTextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnNovo = new System.Windows.Forms.Button();
+            this.btnLimpar = new System.Windows.Forms.Button();
             this.pnlConsulta.SuspendLayout();
             this.gpbInfoMedico.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlConsulta
             // 
-            this.pnlConsulta.Controls.Add(this.button2);
-            this.pnlConsulta.Controls.Add(this.button1);
+            this.pnlConsulta.Controls.Add(this.btnLimpar);
+            this.pnlConsulta.Controls.Add(this.btnNovo);
             this.pnlConsulta.Controls.Add(this.btnVoltar);
             this.pnlConsulta.Controls.Add(this.btnPesquisar);
             this.pnlConsulta.Controls.Add(this.btnExcluir);
@@ -83,7 +83,7 @@ namespace ConsultorioMedico
             this.btnVoltar.Location = new System.Drawing.Point(666, 17);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Size = new System.Drawing.Size(96, 43);
-            this.btnVoltar.TabIndex = 4;
+            this.btnVoltar.TabIndex = 22;
             this.btnVoltar.Text = "&Voltar";
             this.btnVoltar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -96,7 +96,7 @@ namespace ConsultorioMedico
             this.btnPesquisar.Location = new System.Drawing.Point(439, 17);
             this.btnPesquisar.Name = "btnPesquisar";
             this.btnPesquisar.Size = new System.Drawing.Size(96, 43);
-            this.btnPesquisar.TabIndex = 3;
+            this.btnPesquisar.TabIndex = 20;
             this.btnPesquisar.Text = "&Pesquisar";
             this.btnPesquisar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPesquisar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -108,7 +108,7 @@ namespace ConsultorioMedico
             this.btnExcluir.Location = new System.Drawing.Point(327, 17);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(96, 43);
-            this.btnExcluir.TabIndex = 2;
+            this.btnExcluir.TabIndex = 19;
             this.btnExcluir.Text = "E&xcluir";
             this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnExcluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -120,7 +120,7 @@ namespace ConsultorioMedico
             this.btnAlterar.Location = new System.Drawing.Point(218, 17);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(96, 43);
-            this.btnAlterar.TabIndex = 1;
+            this.btnAlterar.TabIndex = 18;
             this.btnAlterar.Text = "&Alterar";
             this.btnAlterar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAlterar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -132,7 +132,7 @@ namespace ConsultorioMedico
             this.btnCadastrar.Location = new System.Drawing.Point(114, 17);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(96, 43);
-            this.btnCadastrar.TabIndex = 0;
+            this.btnCadastrar.TabIndex = 17;
             this.btnCadastrar.Text = "&Cadastrar";
             this.btnCadastrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCadastrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -357,29 +357,30 @@ namespace ConsultorioMedico
             this.mskCEP.Size = new System.Drawing.Size(91, 26);
             this.mskCEP.TabIndex = 12;
             // 
-            // button1
+            // btnNovo
             // 
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(7, 17);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(96, 43);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "&Novo";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnNovo.Image = ((System.Drawing.Image)(resources.GetObject("btnNovo.Image")));
+            this.btnNovo.Location = new System.Drawing.Point(7, 17);
+            this.btnNovo.Name = "btnNovo";
+            this.btnNovo.Size = new System.Drawing.Size(96, 43);
+            this.btnNovo.TabIndex = 16;
+            this.btnNovo.Text = "&Novo";
+            this.btnNovo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnNovo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
-            // button2
+            // btnLimpar
             // 
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(554, 17);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(96, 43);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "&Limpar";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnLimpar.Image = ((System.Drawing.Image)(resources.GetObject("btnLimpar.Image")));
+            this.btnLimpar.Location = new System.Drawing.Point(554, 17);
+            this.btnLimpar.Name = "btnLimpar";
+            this.btnLimpar.Size = new System.Drawing.Size(96, 43);
+            this.btnLimpar.TabIndex = 21;
+            this.btnLimpar.Text = "&Limpar";
+            this.btnLimpar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLimpar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnLimpar.UseVisualStyleBackColor = true;
             // 
             // frmPacientes
             // 
@@ -431,7 +432,7 @@ namespace ConsultorioMedico
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.MaskedTextBox mskCEP;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnLimpar;
+        private System.Windows.Forms.Button btnNovo;
     }
 }
