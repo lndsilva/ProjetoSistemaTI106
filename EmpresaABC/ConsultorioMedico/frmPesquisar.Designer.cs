@@ -38,13 +38,11 @@ namespace ConsultorioMedico
             this.ltbItensPesquisados = new System.Windows.Forms.ListBox();
             this.btnPesquisar = new System.Windows.Forms.Button();
             this.btnLimpar = new System.Windows.Forms.Button();
-            this.btnTeste = new System.Windows.Forms.Button();
             this.gpbPesquisar.SuspendLayout();
             this.SuspendLayout();
             // 
             // gpbPesquisar
             // 
-            this.gpbPesquisar.Controls.Add(this.btnTeste);
             this.gpbPesquisar.Controls.Add(this.txtDescricao);
             this.gpbPesquisar.Controls.Add(this.lblDescricao);
             this.gpbPesquisar.Controls.Add(this.rdbNome);
@@ -105,6 +103,7 @@ namespace ConsultorioMedico
             this.ltbItensPesquisados.Name = "ltbItensPesquisados";
             this.ltbItensPesquisados.Size = new System.Drawing.Size(515, 147);
             this.ltbItensPesquisados.TabIndex = 1;
+            this.ltbItensPesquisados.SelectedIndexChanged += new System.EventHandler(this.ltbItensPesquisados_SelectedIndexChanged);
             // 
             // btnPesquisar
             // 
@@ -133,16 +132,6 @@ namespace ConsultorioMedico
             this.btnLimpar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnLimpar.UseVisualStyleBackColor = true;
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
-            // 
-            // btnTeste
-            // 
-            this.btnTeste.Location = new System.Drawing.Point(387, 25);
-            this.btnTeste.Name = "btnTeste";
-            this.btnTeste.Size = new System.Drawing.Size(119, 59);
-            this.btnTeste.TabIndex = 7;
-            this.btnTeste.Text = "Teste";
-            this.btnTeste.UseVisualStyleBackColor = true;
-            this.btnTeste.Click += new System.EventHandler(this.btnTeste_Click);
             // 
             // frmPesquisar
             // 
@@ -175,6 +164,5 @@ namespace ConsultorioMedico
         private System.Windows.Forms.ListBox ltbItensPesquisados;
         private System.Windows.Forms.Button btnPesquisar;
         private System.Windows.Forms.Button btnLimpar;
-        private System.Windows.Forms.Button btnTeste;
     }
 }

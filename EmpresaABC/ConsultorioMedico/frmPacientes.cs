@@ -23,6 +23,20 @@ namespace ConsultorioMedico
         static extern int GetMenuItemCount(IntPtr hWnd);
 
 
+        public void desabilitarCampos()
+        {
+            txtCodigo.Enabled = false;
+            txtNome.Enabled = false;
+            txtBairro.Enabled = false;
+            txtCidade.Enabled = false;
+            txtEmail.Enabled = false;
+            txtEndereco.Enabled = false;
+            mskCEP.Enabled = false;
+            mskCPF.Enabled = false;
+            mskTelefone.Enabled = false;
+            cbbEstado.Enabled = false;
+        }
+
         public frmPacientes()
         {
             InitializeComponent();

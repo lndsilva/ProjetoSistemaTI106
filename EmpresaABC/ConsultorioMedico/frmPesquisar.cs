@@ -48,22 +48,33 @@ namespace ConsultorioMedico
             {
                 ltbItensPesquisados.Items.Clear();
                 ltbItensPesquisados.Items.Add(txtDescricao.Text);
-                
+
             }
             if (rdbNome.Checked)
             {
                 //ltbItensPesquisados.Items.Clear();
-                ltbItensPesquisados.Items.Add(txtDescricao.Text);                
+                ltbItensPesquisados.Items.Add(txtDescricao.Text);
             }
         }
 
         private void btnTeste_Click(object sender, EventArgs e)
         {
             //Pegando o indice selecionado
-            
+
             //int i = ltbItensPesquisados.SelectedIndex;
 
             //MessageBox.Show("O indice selecionado foi " + i);
+
+            //Pegando o valor selecionado
+
+            //string valor = ltbItensPesquisados.SelectedItem.ToString();
+
+            // MessageBox.Show("O valor selecionado foi: " + valor);
+        }
+
+        private void ltbItensPesquisados_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string valor = ltbItensPesquisados.SelectedItem.ToString();
         }
     }
 }
