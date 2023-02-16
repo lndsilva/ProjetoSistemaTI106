@@ -59,6 +59,8 @@ namespace ConsultorioMedico
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblNome = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
+            this.btnCarregaEndereco = new System.Windows.Forms.Button();
+            this.txtCEPNovo = new System.Windows.Forms.TextBox();
             this.pnlConsulta.SuspendLayout();
             this.gpbInfoMedico.SuspendLayout();
             this.SuspendLayout();
@@ -168,6 +170,8 @@ namespace ConsultorioMedico
             // 
             // gpbInfoMedico
             // 
+            this.gpbInfoMedico.Controls.Add(this.txtCEPNovo);
+            this.gpbInfoMedico.Controls.Add(this.btnCarregaEndereco);
             this.gpbInfoMedico.Controls.Add(this.mskCEP);
             this.gpbInfoMedico.Controls.Add(this.txtCodigo);
             this.gpbInfoMedico.Controls.Add(this.mskCPF);
@@ -385,6 +389,23 @@ namespace ConsultorioMedico
             this.lblEmail.TabIndex = 8;
             this.lblEmail.Text = "E-mail";
             // 
+            // btnCarregaEndereco
+            // 
+            this.btnCarregaEndereco.Location = new System.Drawing.Point(518, 323);
+            this.btnCarregaEndereco.Name = "btnCarregaEndereco";
+            this.btnCarregaEndereco.Size = new System.Drawing.Size(181, 47);
+            this.btnCarregaEndereco.TabIndex = 24;
+            this.btnCarregaEndereco.Text = "Carrega Endereço";
+            this.btnCarregaEndereco.UseVisualStyleBackColor = true;
+            this.btnCarregaEndereco.Click += new System.EventHandler(this.btnCarregaEndereco_Click);
+            // 
+            // txtCEPNovo
+            // 
+            this.txtCEPNovo.Location = new System.Drawing.Point(357, 333);
+            this.txtCEPNovo.Name = "txtCEPNovo";
+            this.txtCEPNovo.Size = new System.Drawing.Size(100, 26);
+            this.txtCEPNovo.TabIndex = 25;
+            // 
             // frmPacientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -437,5 +458,7 @@ namespace ConsultorioMedico
         private System.Windows.Forms.MaskedTextBox mskCEP;
         private System.Windows.Forms.Button btnLimpar;
         private System.Windows.Forms.Button btnNovo;
+        private System.Windows.Forms.Button btnCarregaEndereco;
+        private System.Windows.Forms.TextBox txtCEPNovo;
     }
 }

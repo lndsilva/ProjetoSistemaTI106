@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+//Importando para janela do projeto a biblioteca dos correios
+using Correios.Net;
 
 namespace ConsultorioMedico
 {
@@ -166,5 +168,21 @@ namespace ConsultorioMedico
             limparCampos();
             txtNome.Focus();
         }
+        
+       
+        private void btnCarregaEndereco_Click(object sender, EventArgs e)
+        {
+            Address add;
+
+            add = SearchZip.GetAddress(txtCEPNovo.Text, 1000);
+          
+            txtEndereco.Text = add.Street;
+            txtBairro.Text = add.District;
+            txtCidade.Text = add.City;
+            cbbEstado.Text = add.State;                   
+
+        }
+
+      
     }
 }
