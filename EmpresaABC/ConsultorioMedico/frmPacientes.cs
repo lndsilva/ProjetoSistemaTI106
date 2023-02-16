@@ -42,7 +42,7 @@ namespace ConsultorioMedico
         }
 
         public void habilitarCampos()
-        {            
+        {
             txtNome.Enabled = true;
             txtBairro.Enabled = true;
             txtCidade.Enabled = true;
@@ -57,10 +57,36 @@ namespace ConsultorioMedico
             txtNome.Focus();
         }
 
+        public void limparCampos()
+        {
+            txtNome.Text = "";
+            txtBairro.Text = "";
+            txtCidade.Text = "";
+            txtEmail.Text = "";
+            txtEndereco.Text = "";
+            mskCEP.Text = "";
+            mskCPF.Text = "";
+            mskTelefone.Text = "";
+            cbbEstado.Text = "";
+        }
+
+        //Método para carregar a comboBox estado
+        public void carregarComboBox()
+        {
+            cbbEstado.Items.Add("");
+            cbbEstado.Items.Add("SP");
+            cbbEstado.Items.Add("RJ");
+            cbbEstado.Items.Add("BH");
+            cbbEstado.Items.Add("BA");
+            cbbEstado.Items.Add("RN");
+        }
+
+        //Construtor da classe
         public frmPacientes()
         {
             InitializeComponent();
             desabilitarCampos();
+            carregarComboBox();
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -81,6 +107,64 @@ namespace ConsultorioMedico
         private void btnNovo_Click(object sender, EventArgs e)
         {
             habilitarCampos();
+        }
+
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            frmPesquisar abrir = new frmPesquisar();
+            abrir.ShowDialog();
+
+        }
+
+        private void btnCadastrar_Click(object sender, EventArgs e)
+        {
+            //Executando o método verificarCampo
+            verificarCampo();
+
+        }
+
+        //Criando o método para verificar campo vazio
+        public void verificarCampo()
+        {
+            //if (txtNome.Text == "")
+            //{
+            //    MessageBox.Show("Favor inserir valores");
+            //}
+            //else if (txtEmail.Text == "")
+            //{
+            //    MessageBox.Show("Favor inserir valores");
+            //}
+
+            if (txtNome.Text.Equals("") || txtEmail.Text.Equals("")
+                || mskTelefone.Text.Equals("(  )      -")
+                || mskCPF.Text.Equals("   .   .   -")
+                || txtEndereco.Text.Equals("") || mskCEP.Text.Equals("     -")
+                || txtBairro.Text.Equals("") || txtCidade.Text.Equals("")
+                || cbbEstado.Text.Equals(""))
+            {
+                MessageBox.Show("Favor inserir valores!!!",
+                    "Mensagem do Sistema",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information,
+                    MessageBoxDefaultButton.Button1);
+                txtNome.Focus();
+            }
+            else
+            {
+                MessageBox.Show("Cadastrado com sucesso!!!",
+                    "Mensagem do Sistema",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information,
+                    MessageBoxDefaultButton.Button1);
+                desabilitarCampos();
+                limparCampos();
+            }
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            limparCampos();
+            txtNome.Focus();
         }
     }
 }
