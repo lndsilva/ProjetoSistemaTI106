@@ -39,7 +39,6 @@ namespace ConsultorioMedico
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.gpbInfoMedico = new System.Windows.Forms.GroupBox();
-            this.mskCEP = new System.Windows.Forms.MaskedTextBox();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.mskCPF = new System.Windows.Forms.MaskedTextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -59,8 +58,7 @@ namespace ConsultorioMedico
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblNome = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
-            this.btnCarregaEndereco = new System.Windows.Forms.Button();
-            this.txtCEPNovo = new System.Windows.Forms.TextBox();
+            this.mskCEP = new System.Windows.Forms.MaskedTextBox();
             this.pnlConsulta.SuspendLayout();
             this.gpbInfoMedico.SuspendLayout();
             this.SuspendLayout();
@@ -170,8 +168,6 @@ namespace ConsultorioMedico
             // 
             // gpbInfoMedico
             // 
-            this.gpbInfoMedico.Controls.Add(this.txtCEPNovo);
-            this.gpbInfoMedico.Controls.Add(this.btnCarregaEndereco);
             this.gpbInfoMedico.Controls.Add(this.mskCEP);
             this.gpbInfoMedico.Controls.Add(this.txtCodigo);
             this.gpbInfoMedico.Controls.Add(this.mskCPF);
@@ -199,15 +195,6 @@ namespace ConsultorioMedico
             this.gpbInfoMedico.TabIndex = 0;
             this.gpbInfoMedico.TabStop = false;
             this.gpbInfoMedico.Text = "Informações do Paciente";
-            // 
-            // mskCEP
-            // 
-            this.mskCEP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mskCEP.Location = new System.Drawing.Point(608, 206);
-            this.mskCEP.Mask = "00000-000";
-            this.mskCEP.Name = "mskCEP";
-            this.mskCEP.Size = new System.Drawing.Size(91, 26);
-            this.mskCEP.TabIndex = 12;
             // 
             // txtCodigo
             // 
@@ -389,22 +376,14 @@ namespace ConsultorioMedico
             this.lblEmail.TabIndex = 8;
             this.lblEmail.Text = "E-mail";
             // 
-            // btnCarregaEndereco
+            // mskCEP
             // 
-            this.btnCarregaEndereco.Location = new System.Drawing.Point(518, 323);
-            this.btnCarregaEndereco.Name = "btnCarregaEndereco";
-            this.btnCarregaEndereco.Size = new System.Drawing.Size(181, 47);
-            this.btnCarregaEndereco.TabIndex = 24;
-            this.btnCarregaEndereco.Text = "Carrega Endereço";
-            this.btnCarregaEndereco.UseVisualStyleBackColor = true;
-            this.btnCarregaEndereco.Click += new System.EventHandler(this.btnCarregaEndereco_Click);
-            // 
-            // txtCEPNovo
-            // 
-            this.txtCEPNovo.Location = new System.Drawing.Point(357, 333);
-            this.txtCEPNovo.Name = "txtCEPNovo";
-            this.txtCEPNovo.Size = new System.Drawing.Size(100, 26);
-            this.txtCEPNovo.TabIndex = 25;
+            this.mskCEP.Location = new System.Drawing.Point(608, 205);
+            this.mskCEP.Mask = "00000000";
+            this.mskCEP.Name = "mskCEP";
+            this.mskCEP.Size = new System.Drawing.Size(91, 26);
+            this.mskCEP.TabIndex = 25;
+            this.mskCEP.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mskCEP_KeyDown);
             // 
             // frmPacientes
             // 
@@ -455,10 +434,8 @@ namespace ConsultorioMedico
         private System.Windows.Forms.ComboBox cbbEstado;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtCodigo;
-        private System.Windows.Forms.MaskedTextBox mskCEP;
         private System.Windows.Forms.Button btnLimpar;
         private System.Windows.Forms.Button btnNovo;
-        private System.Windows.Forms.Button btnCarregaEndereco;
-        private System.Windows.Forms.TextBox txtCEPNovo;
+        private System.Windows.Forms.MaskedTextBox mskCEP;
     }
 }

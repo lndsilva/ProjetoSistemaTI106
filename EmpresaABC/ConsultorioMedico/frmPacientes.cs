@@ -8,8 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-//Importando para janela do projeto a biblioteca dos correios
-using Correios.Net;
+
+
 
 namespace ConsultorioMedico
 {
@@ -168,21 +168,43 @@ namespace ConsultorioMedico
             limparCampos();
             txtNome.Focus();
         }
-        
-       
-        private void btnCarregaEndereco_Click(object sender, EventArgs e)
+        private void mskCEP_KeyDown(object sender, KeyEventArgs e)
         {
-            Address add;
+            if (e.KeyCode == Keys.Enter)
+            {
+                buscaCEP(mskCEP.Text);
 
-            add = SearchZip.GetAddress(txtCEPNovo.Text, 1000);
-          
-            txtEndereco.Text = add.Street;
-            txtBairro.Text = add.District;
-            txtCidade.Text = add.City;
-            cbbEstado.Text = add.State;                   
-
+            }
         }
+        //Acessar o serviço de correio pelo endereço
+        //https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente?wsdl
 
-      
+        public void buscaCEP(string numCep)
+        {
+            WSCorreios.AtendeClienteClient ws = new WSCorreios.AtendeClienteClient();
+
+   
+            try
+            {
+                WSCorreios.enderecoERP end = ws.consultaCEP(numCep);
+
+                txtEndereco.Text = end.end;
+                txtBairro.Text = end.bairro;
+                txtCidade.Text = end.cidade;
+                cbbEstado.Text = end.uf;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Insira CEP válido!!!",
+                    "Mensagem do Sistema",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error,
+                    MessageBoxDefaultButton.Button1);
+                mskCEP.Clear();
+                mskCEP.Focus();
+
+            }
+        }
     }
+
 }
