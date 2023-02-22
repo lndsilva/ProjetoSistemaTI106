@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Globalization;
+using System.Text.RegularExpressions;
 
 
 
@@ -183,7 +185,7 @@ namespace ConsultorioMedico
         {
             WSCorreios.AtendeClienteClient ws = new WSCorreios.AtendeClienteClient();
 
-   
+
             try
             {
                 WSCorreios.enderecoERP end = ws.consultaCEP(numCep);
@@ -202,6 +204,158 @@ namespace ConsultorioMedico
                     MessageBoxDefaultButton.Button1);
                 mskCEP.Clear();
                 mskCEP.Focus();
+
+            }
+        }
+        //https://learn.microsoft.com/pt-br/dotnet/standard/base-types/how-to-verify-that-strings-are-in-valid-email-format
+
+        public static bool validaEmail(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+                return false;
+
+            try
+            {
+
+                email = Regex.Replace(email, @"(@)(.+)$", DomainMapper,
+                    RegexOptions.None, TimeSpan.FromMilliseconds(200));
+
+                string DomainMapper(Match math)
+                {
+                    var idn = new IdnMapping();
+
+                    string domainName = idn.GetAscii(math.Groups[2].Value);
+
+                    return math.Groups[1].Value + domainName;
+                }
+            }
+            catch (RegexMatchTimeoutException e)
+            {
+                return false;
+
+            }
+            catch (ArgumentException e)
+            {
+                return false;
+            }
+            try
+            {
+                return Regex.IsMatch(email,
+                    @"^[^@\s]+@[^@\s]+\.[^@\s]+$",
+                    RegexOptions.IgnoreCase,
+                    TimeSpan.FromMilliseconds(250));
+            }
+            catch (RegexMatchTimeoutException)
+            {
+                return false;
+            }
+        }
+
+        private static string DomainMapper(Match match)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static bool ValidaCPF(string vrCPF)
+        {
+            string valor = vrCPF.Replace(".", "");
+
+            valor = valor.Replace("-", "");
+
+            if (valor.Length != 11)
+                return false;
+
+            bool igual = true;
+
+            for (int i = 1; i < 11 && igual; i++)
+                if (valor[i] != valor[0])
+                    igual = false;
+
+            if (igual || valor == "12345678909")
+                return false;
+
+            int[] numeros = new int[11];
+
+            for (int i = 0; i < 11; i++)
+                numeros[i] = int.Parse(
+                  valor[i].ToString());
+
+            int soma = 0;
+
+            for (int i = 0; i < 9; i++)
+                soma += (10 - i) * numeros[i];
+
+            int resultado = soma % 11;
+
+            if (resultado == 1 || resultado == 0)
+            {
+                if (numeros[9] != 0)
+                    return false;
+            }
+            else if (numeros[9] != 11 - resultado)
+                return false;
+
+            soma = 0;
+
+            for (int i = 0; i < 10; i++)
+                soma += (11 - i) * numeros[i];
+
+            resultado = soma % 11;
+
+            if (resultado == 1 || resultado == 0)
+            {
+                if (numeros[10] != 0)
+                    return false;
+            }
+            else if (numeros[10] != 11 - resultado)
+                return false;
+            return true;
+        }
+
+
+        private void txtEmail_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                bool valida = validaEmail(txtEmail.Text);
+
+                if (valida == true)
+                {
+                    mskCEP.Focus();
+                }
+                else
+                {
+                    MessageBox.Show("Insira e-mail válido",
+                    "Mensagem do Sistema",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error,
+                    MessageBoxDefaultButton.Button1);
+                    txtEmail.Clear();
+                    txtEmail.Focus();
+                }
+            }
+        }
+
+        private void mskCPF_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                bool valida = ValidaCPF(mskCPF.Text);
+
+                if (valida == true)
+                {
+                    mskCEP.Focus();
+                }
+                else
+                {
+                    MessageBox.Show("Insira e-mail válido",
+                   "Mensagem do Sistema",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Error,
+                   MessageBoxDefaultButton.Button1);
+                    mskCPF.Clear();
+                    mskCPF.Focus();
+                }
 
             }
         }
