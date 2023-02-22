@@ -172,7 +172,7 @@ namespace ConsultorioMedico
         }
         private void mskCEP_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
             {
                 buscaCEP(mskCEP.Text);
 
@@ -315,7 +315,7 @@ namespace ConsultorioMedico
 
         private void txtEmail_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if ((e.KeyCode == Keys.Enter) || (e.KeyCode == Keys.Tab))
             {
                 bool valida = validaEmail(txtEmail.Text);
 
