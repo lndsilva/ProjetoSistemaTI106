@@ -43,6 +43,7 @@ namespace ConsultorioMedico
             btnAlterar.Enabled = false;
             btnExcluir.Enabled = false;
             btnLimpar.Enabled = false;
+            txt
         }
 
         public void habilitarCampos()
@@ -229,12 +230,12 @@ namespace ConsultorioMedico
                     return math.Groups[1].Value + domainName;
                 }
             }
-            catch (RegexMatchTimeoutException e)
+            catch (RegexMatchTimeoutException)
             {
                 return false;
 
             }
-            catch (ArgumentException e)
+            catch (ArgumentException)
             {
                 return false;
             }
@@ -348,7 +349,7 @@ namespace ConsultorioMedico
                 }
                 else
                 {
-                    MessageBox.Show("Insira e-mail válido",
+                    MessageBox.Show("Insira CPF válido",
                    "Mensagem do Sistema",
                    MessageBoxButtons.OK,
                    MessageBoxIcon.Error,
