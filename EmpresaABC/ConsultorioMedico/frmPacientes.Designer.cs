@@ -39,6 +39,10 @@ namespace ConsultorioMedico
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.gpbInfoMedico = new System.Windows.Forms.GroupBox();
+            this.txtComplemento = new System.Windows.Forms.TextBox();
+            this.lblComplemento = new System.Windows.Forms.Label();
+            this.txtNum = new System.Windows.Forms.TextBox();
+            this.lblNum = new System.Windows.Forms.Label();
             this.mskCEP = new System.Windows.Forms.MaskedTextBox();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.mskCPF = new System.Windows.Forms.MaskedTextBox();
@@ -59,10 +63,6 @@ namespace ConsultorioMedico
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblNome = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
-            this.txtNum = new System.Windows.Forms.TextBox();
-            this.lblNum = new System.Windows.Forms.Label();
-            this.txtComplemento = new System.Windows.Forms.TextBox();
-            this.lblComplemento = new System.Windows.Forms.Label();
             this.pnlConsulta.SuspendLayout();
             this.gpbInfoMedico.SuspendLayout();
             this.SuspendLayout();
@@ -203,6 +203,44 @@ namespace ConsultorioMedico
             this.gpbInfoMedico.TabIndex = 0;
             this.gpbInfoMedico.TabStop = false;
             this.gpbInfoMedico.Text = "Informações do Paciente";
+            // 
+            // txtComplemento
+            // 
+            this.txtComplemento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtComplemento.Location = new System.Drawing.Point(37, 275);
+            this.txtComplemento.MaxLength = 50;
+            this.txtComplemento.Name = "txtComplemento";
+            this.txtComplemento.Size = new System.Drawing.Size(157, 26);
+            this.txtComplemento.TabIndex = 9;
+            // 
+            // lblComplemento
+            // 
+            this.lblComplemento.AutoSize = true;
+            this.lblComplemento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblComplemento.Location = new System.Drawing.Point(37, 251);
+            this.lblComplemento.Name = "lblComplemento";
+            this.lblComplemento.Size = new System.Drawing.Size(108, 20);
+            this.lblComplemento.TabIndex = 29;
+            this.lblComplemento.Text = "Complemento";
+            // 
+            // txtNum
+            // 
+            this.txtNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNum.Location = new System.Drawing.Point(492, 206);
+            this.txtNum.MaxLength = 10;
+            this.txtNum.Name = "txtNum";
+            this.txtNum.Size = new System.Drawing.Size(91, 26);
+            this.txtNum.TabIndex = 7;
+            // 
+            // lblNum
+            // 
+            this.lblNum.AutoSize = true;
+            this.lblNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNum.Location = new System.Drawing.Point(492, 182);
+            this.lblNum.Name = "lblNum";
+            this.lblNum.Size = new System.Drawing.Size(65, 20);
+            this.lblNum.TabIndex = 27;
+            this.lblNum.Text = "Número";
             // 
             // mskCEP
             // 
@@ -394,44 +432,6 @@ namespace ConsultorioMedico
             this.lblEmail.Size = new System.Drawing.Size(53, 20);
             this.lblEmail.TabIndex = 8;
             this.lblEmail.Text = "E-mail";
-            // 
-            // txtNum
-            // 
-            this.txtNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNum.Location = new System.Drawing.Point(492, 206);
-            this.txtNum.MaxLength = 100;
-            this.txtNum.Name = "txtNum";
-            this.txtNum.Size = new System.Drawing.Size(91, 26);
-            this.txtNum.TabIndex = 7;
-            // 
-            // lblNum
-            // 
-            this.lblNum.AutoSize = true;
-            this.lblNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNum.Location = new System.Drawing.Point(492, 182);
-            this.lblNum.Name = "lblNum";
-            this.lblNum.Size = new System.Drawing.Size(65, 20);
-            this.lblNum.TabIndex = 27;
-            this.lblNum.Text = "Número";
-            // 
-            // txtComplemento
-            // 
-            this.txtComplemento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtComplemento.Location = new System.Drawing.Point(37, 275);
-            this.txtComplemento.MaxLength = 50;
-            this.txtComplemento.Name = "txtComplemento";
-            this.txtComplemento.Size = new System.Drawing.Size(157, 26);
-            this.txtComplemento.TabIndex = 9;
-            // 
-            // lblComplemento
-            // 
-            this.lblComplemento.AutoSize = true;
-            this.lblComplemento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblComplemento.Location = new System.Drawing.Point(37, 251);
-            this.lblComplemento.Name = "lblComplemento";
-            this.lblComplemento.Size = new System.Drawing.Size(108, 20);
-            this.lblComplemento.TabIndex = 29;
-            this.lblComplemento.Text = "Complemento";
             // 
             // frmPacientes
             // 

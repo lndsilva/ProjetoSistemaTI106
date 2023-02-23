@@ -192,7 +192,6 @@ namespace ConsultorioMedico
         {
             WSCorreios.AtendeClienteClient ws = new WSCorreios.AtendeClienteClient();
 
-
             try
             {
                 WSCorreios.enderecoERP end = ws.consultaCEP(numCep);
@@ -227,13 +226,13 @@ namespace ConsultorioMedico
                 email = Regex.Replace(email, @"(@)(.+)$", DomainMapper,
                     RegexOptions.None, TimeSpan.FromMilliseconds(200));
 
-                string DomainMapper(Match math)
+                string DomainMapper(Match match)
                 {
                     var idn = new IdnMapping();
 
-                    string domainName = idn.GetAscii(math.Groups[2].Value);
+                    string domainName = idn.GetAscii(match.Groups[2].Value);
 
-                    return math.Groups[1].Value + domainName;
+                    return match.Groups[1].Value + domainName;
                 }
             }
             catch (RegexMatchTimeoutException)
@@ -246,11 +245,23 @@ namespace ConsultorioMedico
                 return false;
             }
             try
-            {
+            {   //Expressão regular
+
+                /*
+                 * O que esperava de cada trecho:
+                 * [a-z0-9.]+ - parte antes do @ do e-mail, nome do usuário;
+                 * @ - caractere de arroba obrigatório;
+                 * [a-z0-9]+ - parte depois do @ do e-mail, nome do provedor;
+                 * \. - caractere de ponto depois do nome do provedor;
+                 * [a-z]+ - geralmente onde é colocado o .com;
+                 * \. - caractere de ponto depois do .com, só deveria ser obrigatório caso haja por exemplo um .br ou a abreviação de qualquer outro país no final do e-mail;
+                 * ([a-z]+)? - geralmente onde é colocado a abreviação do país.
+                 */
+
                 return Regex.IsMatch(email,
-                    @"^[^@\s]+@[^@\s]+\.[^@\s]+$",
-                    RegexOptions.IgnoreCase,
-                    TimeSpan.FromMilliseconds(250));
+                  @"^[^@\s]+@[^@\s]+\.[^@\s]+$",
+                  RegexOptions.IgnoreCase,
+                  TimeSpan.FromMilliseconds(250));
             }
             catch (RegexMatchTimeoutException)
             {
@@ -258,7 +269,9 @@ namespace ConsultorioMedico
             }
         }
 
-        public static bool ValidaCPF(string vrCPF)
+        //https://dicasdeprogramacao.com.br/algoritmo-para-validar-cpf/
+
+        public static bool validaCPF(string vrCPF)
         {
             string valor = vrCPF.Replace(".", "");
 
@@ -342,7 +355,7 @@ namespace ConsultorioMedico
         {
             if (e.KeyCode == Keys.Enter)
             {
-                bool valida = ValidaCPF(mskCPF.Text);
+                bool valida = validaCPF(mskCPF.Text);
 
                 if (valida == true)
                 {
