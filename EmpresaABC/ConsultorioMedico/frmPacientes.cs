@@ -43,7 +43,8 @@ namespace ConsultorioMedico
             btnAlterar.Enabled = false;
             btnExcluir.Enabled = false;
             btnLimpar.Enabled = false;
-            txt
+            txtComplemento.Enabled = false;
+            txtNum.Enabled = false;
         }
 
         public void habilitarCampos()
@@ -59,6 +60,8 @@ namespace ConsultorioMedico
             cbbEstado.Enabled = true;
             btnCadastrar.Enabled = true;
             btnLimpar.Enabled = true;
+            txtComplemento.Enabled = true;
+            txtNum.Enabled = true;
             txtNome.Focus();
         }
 
@@ -73,6 +76,8 @@ namespace ConsultorioMedico
             mskCPF.Text = "";
             mskTelefone.Text = "";
             cbbEstado.Text = "";
+            txtNum.Clear();
+            txtComplemento.Clear();
         }
 
         //Método para carregar a comboBox estado
@@ -112,6 +117,7 @@ namespace ConsultorioMedico
         private void btnNovo_Click(object sender, EventArgs e)
         {
             habilitarCampos();
+            btnNovo.Enabled = false;
         }
 
         private void btnPesquisar_Click(object sender, EventArgs e)
@@ -250,11 +256,6 @@ namespace ConsultorioMedico
             {
                 return false;
             }
-        }
-
-        private static string DomainMapper(Match match)
-        {
-            throw new NotImplementedException();
         }
 
         public static bool ValidaCPF(string vrCPF)
