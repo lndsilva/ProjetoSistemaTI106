@@ -10,8 +10,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Globalization;
 using System.Text.RegularExpressions;
-
-
+using MySql.Data.MySqlClient;
 
 namespace ConsultorioMedico
 {
@@ -131,7 +130,43 @@ namespace ConsultorioMedico
         {
             //Executando o método verificarCampo
             verificarCampo();
+            //Executar o método de cadastrar paciente
+            cadastrarPaciente();
 
+        }
+
+        public void cadastrarPaciente()
+        {
+            MySqlCommand comm = new MySqlCommand();
+
+            comm.CommandText = "insert into tbPaciente(nome,email,telefone,cpf,endereco,numero,cep,complemento,bairro,cidade,siglaEst) " +
+                "values(@nome,@email,@telefone,@cpf,@endereco,@numero, @cep,@complemento,@bairro,@cidade,@siglaEst);";
+            
+            comm.CommandType = CommandType.Text;
+            
+            comm.Parameters.Clear();
+            
+            comm.Parameters.Add("@nome", MySqlDbType.VarChar, 100).Value = txtNome.Text;
+            comm.Parameters.Add("@email", MySqlDbType.VarChar, 100).Value = txtEmail.Text;
+            comm.Parameters.Add("@telefone", MySqlDbType.VarChar, 14).Value = mskTelefone.Text;
+            comm.Parameters.Add("@cpf", MySqlDbType.VarChar, 14).Value = mskCPF.Text;
+            comm.Parameters.Add("@endereco", MySqlDbType.VarChar, 100).Value = txtEndereco.Text;
+            comm.Parameters.Add("@numero", MySqlDbType.VarChar, 10).Value = txtNum.Text;
+            comm.Parameters.Add("@cep", MySqlDbType.VarChar, 8).Value = mskCEP.Text;
+            comm.Parameters.Add("@complemento", MySqlDbType.VarChar, 50).Value = txtComplemento.Text;
+            comm.Parameters.Add("@bairro", MySqlDbType.VarChar, 50).Value = txtBairro.Text;
+            comm.Parameters.Add("@cidade", MySqlDbType.VarChar, 50).Value = txtCidade.Text;
+            comm.Parameters.Add("@siglaEst", MySqlDbType.VarChar, 2).Value = cbbEstado.Text;
+
+            comm.CommandType = CommandType.Text;
+
+            comm.Connection = Conexao.obterConexao();
+
+            int i = comm.ExecuteNonQuery();
+
+            MessageBox.Show("Paciente cadastrado com sucesso!!!" + i);
+
+            Conexao.fecharConexao();
         }
 
         //Criando o método para verificar campo vazio
@@ -162,13 +197,13 @@ namespace ConsultorioMedico
             }
             else
             {
-                MessageBox.Show("Cadastrado com sucesso!!!",
-                    "Mensagem do Sistema",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information,
-                    MessageBoxDefaultButton.Button1);
-                desabilitarCampos();
-                limparCampos();
+                //MessageBox.Show("Cadastrado com sucesso!!!",
+                //    "Mensagem do Sistema",
+                //    MessageBoxButtons.OK,
+                //    MessageBoxIcon.Information,
+                //    MessageBoxDefaultButton.Button1);
+                //desabilitarCampos();
+                //limparCampos();
             }
         }
 
