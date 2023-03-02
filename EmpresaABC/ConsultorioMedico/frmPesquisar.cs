@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace ConsultorioMedico
 {
@@ -47,34 +48,85 @@ namespace ConsultorioMedico
             if (rdbCodigo.Checked)
             {
                 ltbItensPesquisados.Items.Clear();
-                ltbItensPesquisados.Items.Add(txtDescricao.Text);
+                //ltbItensPesquisados.Items.Add(txtDescricao.Text);
+                pesquisaCodigo(txtDescricao.Text);
 
             }
-            if (rdbNome.Checked)
+            else if (rdbNome.Checked)
             {
                 //ltbItensPesquisados.Items.Clear();
-                ltbItensPesquisados.Items.Add(txtDescricao.Text);
+                //ltbItensPesquisados.Items.Add(txtDescricao.Text);
+                pesquisaNome(txtDescricao.Text);
             }
+
+
         }
 
-        private void btnTeste_Click(object sender, EventArgs e)
+        public void pesquisaCodigo(string codigo)
         {
-            //Pegando o indice selecionado
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "select * from tbPaciente where codpac = " + codigo + ";";
+            comm.CommandType = CommandType.Text;
+            comm.Connection = Conexao.obterConexao();
 
-            //int i = ltbItensPesquisados.SelectedIndex;
+            MySqlDataReader DR;
+            DR = comm.ExecuteReader();
+            DR.Read();
 
-            //MessageBox.Show("O indice selecionado foi " + i);
+            ltbItensPesquisados.Items.Clear();
 
-            //Pegando o valor selecionado
+            ltbItensPesquisados.Items.Add(DR.GetString(1));
 
-            //string valor = ltbItensPesquisados.SelectedItem.ToString();
+            Conexao.fecharConexao();
 
-            // MessageBox.Show("O valor selecionado foi: " + valor);
         }
+
+        public void pesquisaNome(string nome)
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "select * from tbPaciente where nome like '%" + nome + "%';";
+            comm.CommandType = CommandType.Text;
+            comm.Connection = Conexao.obterConexao();
+
+            MySqlDataReader DR;
+
+            DR = comm.ExecuteReader();
+
+            ltbItensPesquisados.Items.Clear();
+
+            while (DR.Read())
+            {
+
+                ltbItensPesquisados.Items.Add(DR.GetString(1));
+            }
+            Conexao.fecharConexao();
+
+
+        }
+
+        //private void btnTeste_Click(object sender, EventArgs e)
+        //{
+        //    //Pegando o indice selecionado
+
+        //    //int i = ltbItensPesquisados.SelectedIndex;
+
+        //    //MessageBox.Show("O indice selecionado foi " + i);
+
+        //    //Pegando o valor selecionado
+
+        //    //string valor = ltbItensPesquisados.SelectedItem.ToString();
+
+        //    // MessageBox.Show("O valor selecionado foi: " + valor);
+        //}
 
         private void ltbItensPesquisados_SelectedIndexChanged(object sender, EventArgs e)
         {
             string valor = ltbItensPesquisados.SelectedItem.ToString();
+            //MessageBox.Show("Resultado: " + valor);
+            frmPacientes abrir = new frmPacientes(valor);
+            abrir.Show();
+            this.Hide();
+
         }
     }
 }

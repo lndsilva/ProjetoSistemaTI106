@@ -97,6 +97,45 @@ namespace ConsultorioMedico
             desabilitarCampos();
             carregarComboBox();
         }
+        string nome = "";
+        //criando construtor com parâmetros
+        public frmPacientes(string nome)
+        {
+            InitializeComponent();
+            desabilitarCampos();
+            carregarComboBox();
+            txtNome.Text = nome;
+        }
+
+        public void pesquisarCampo()
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "select * from tbpaciente where nome = '"+txtNome.Text+"';";
+            comm.CommandType = CommandType.Text;
+
+            comm.Connection = Conexao.obterConexao();
+
+            MySqlDataReader DR;
+            DR = comm.ExecuteReader();
+            DR.Read();
+
+            txtCodigo.Text = Convert.ToString(DR.GetInt32(0));
+            txtNome.Text = DR.GetString(1);
+            txtEmail.Text = DR.GetString(2);
+            mskTelefone.Text = DR.GetString(3);
+            mskCPF.Text = DR.GetString(4);
+            txtEndereco.Text = DR.GetString(5);
+            txtNum.Text = DR.GetString(6);
+            mskCEP.Text = DR.GetString(7);
+            txtComplemento.Text = DR.GetString(8);
+            txtBairro.Text = DR.GetString(9);
+            txtCidade.Text = DR.GetString(10);
+            cbbEstado.Text = DR.GetString(11);
+
+            Conexao.fecharConexao();
+
+
+        }
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
@@ -123,6 +162,7 @@ namespace ConsultorioMedico
         {
             frmPesquisar abrir = new frmPesquisar();
             abrir.ShowDialog();
+            this.Hide();
 
         }
 
@@ -165,6 +205,8 @@ namespace ConsultorioMedico
             int i = comm.ExecuteNonQuery();
 
             MessageBox.Show("Paciente cadastrado com sucesso!!!" + i);
+            limparCampos();
+            desabilitarCampos();
 
             Conexao.fecharConexao();
         }
@@ -408,6 +450,17 @@ namespace ConsultorioMedico
                 }
 
             }
+        }
+
+        private void btnCarrega_Click(object sender, EventArgs e)
+        {
+            pesquisarCampo();
+        }
+
+        private void txtNome_TextChanged(object sender, EventArgs e)
+        {
+            this.Hide();
+            pesquisarCampo();
         }
     }
 

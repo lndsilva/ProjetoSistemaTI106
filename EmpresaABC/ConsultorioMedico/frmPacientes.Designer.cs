@@ -402,6 +402,7 @@ namespace ConsultorioMedico
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(556, 26);
             this.txtNome.TabIndex = 2;
+            this.txtNome.TextChanged += new System.EventHandler(this.txtNome_TextChanged);
             // 
             // txtEmail
             // 

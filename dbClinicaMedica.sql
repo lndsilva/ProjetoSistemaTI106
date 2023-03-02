@@ -24,3 +24,16 @@ insert into tbPaciente(nome,email,telefone,cpf,
 	siglaEst) values('Senac','senac@senac.com',
 	'(11) 98574-8582','560.054.738-24','Rua Dr. Antonio Bento','377',
 	'04750000','casa','Santo Amaro','São Paulo','sp');
+
+-- Pesquisa por nome
+
+select * from tbPaciente where nome like '%s%';
+
+
+-- Pesquisa por código
+
+select * from tbPaciente where codpac = 4;
+
+
+
+
