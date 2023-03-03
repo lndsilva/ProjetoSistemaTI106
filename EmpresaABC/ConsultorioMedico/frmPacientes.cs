@@ -98,6 +98,8 @@ namespace ConsultorioMedico
             carregarComboBox();
         }
         string nome = "";
+
+        bool flag = false;
         //criando construtor com parâmetros
         public frmPacientes(string nome)
         {
@@ -105,12 +107,24 @@ namespace ConsultorioMedico
             desabilitarCampos();
             carregarComboBox();
             txtNome.Text = nome;
+            habilitarCampos();
+            pesquisarCampo(nome);
+            flag = true;
+            ativarUpdate();
+        }
+        public void ativarUpdate()
+        {
+            btnAlterar.Enabled = true;
+            btnExcluir.Enabled = true;
+            btnCadastrar.Enabled = false;
+            btnNovo.Enabled = false;
+            btnLimpar.Enabled = false;
         }
 
-        public void pesquisarCampo()
+        public void pesquisarCampo(string nome)
         {
             MySqlCommand comm = new MySqlCommand();
-            comm.CommandText = "select * from tbpaciente where nome = '"+txtNome.Text+"';";
+            comm.CommandText = "select * from tbpaciente where nome = '" + nome + "';";
             comm.CommandType = CommandType.Text;
 
             comm.Connection = Conexao.obterConexao();
@@ -181,11 +195,11 @@ namespace ConsultorioMedico
 
             comm.CommandText = "insert into tbPaciente(nome,email,telefone,cpf,endereco,numero,cep,complemento,bairro,cidade,siglaEst) " +
                 "values(@nome,@email,@telefone,@cpf,@endereco,@numero, @cep,@complemento,@bairro,@cidade,@siglaEst);";
-            
+
             comm.CommandType = CommandType.Text;
-            
+
             comm.Parameters.Clear();
-            
+
             comm.Parameters.Add("@nome", MySqlDbType.VarChar, 100).Value = txtNome.Text;
             comm.Parameters.Add("@email", MySqlDbType.VarChar, 100).Value = txtEmail.Text;
             comm.Parameters.Add("@telefone", MySqlDbType.VarChar, 14).Value = mskTelefone.Text;
@@ -454,13 +468,84 @@ namespace ConsultorioMedico
 
         private void btnCarrega_Click(object sender, EventArgs e)
         {
-            pesquisarCampo();
+            pesquisarCampo(nome);
         }
 
         private void txtNome_TextChanged(object sender, EventArgs e)
         {
-            this.Hide();
-            pesquisarCampo();
+            //this.Hide();
+            if (flag)
+            {
+                // pesquisarCampo();
+            }
+            else
+            {
+
+            }
+
+
+
+
+
+        }
+
+        public void alterarPaciente(int codPac)
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "update tbPaciente set nome = @nome, email = @email, telefone = @telefone, cpf = @cpf, endereco = @endereco, numero = @numero, cep = @cep, complemento = @complemento, bairro = @bairro, cidade = @cidade, siglaEst = @siglaEst where codpac = " + codPac + ";";
+            comm.CommandType = CommandType.Text;
+            comm.Connection = Conexao.obterConexao();
+
+            comm.Parameters.Clear();
+
+            comm.Parameters.Add("@nome", MySqlDbType.VarChar, 100).Value = txtNome.Text;
+            comm.Parameters.Add("@email", MySqlDbType.VarChar, 100).Value = txtEmail.Text;
+            comm.Parameters.Add("@telefone", MySqlDbType.VarChar, 14).Value = mskTelefone.Text;
+            comm.Parameters.Add("@cpf", MySqlDbType.VarChar, 14).Value = mskCPF.Text;
+            comm.Parameters.Add("@endereco", MySqlDbType.VarChar, 100).Value = txtEndereco.Text;
+            comm.Parameters.Add("@numero", MySqlDbType.VarChar, 10).Value = txtNum.Text;
+            comm.Parameters.Add("@cep", MySqlDbType.VarChar, 8).Value = mskCEP.Text;
+            comm.Parameters.Add("@complemento", MySqlDbType.VarChar, 50).Value = txtComplemento.Text;
+            comm.Parameters.Add("@bairro", MySqlDbType.VarChar, 50).Value = txtBairro.Text;
+            comm.Parameters.Add("@cidade", MySqlDbType.VarChar, 50).Value = txtCidade.Text;
+            comm.Parameters.Add("@siglaEst", MySqlDbType.VarChar, 2).Value = cbbEstado.Text;
+
+
+            int res = comm.ExecuteNonQuery();
+            MessageBox.Show("Registro alterado com sucesso." + res);
+            Conexao.fecharConexao();
+
+        }
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+            alterarPaciente(Convert.ToInt32(txtCodigo.Text));
+        }
+
+        public void excluirPaciente(int codPac)
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "delete from tbPaciente where codpac = "+codPac+";";
+            comm.CommandType = CommandType.Text;
+            comm.Connection = Conexao.obterConexao();
+            comm.Parameters.Clear();
+            comm.Parameters.Add("@codProd", MySqlDbType.Int32).Value = txtCodigo.Text;
+            
+            DialogResult vresp = MessageBox.Show("Deseja Realizar a Exclusão?", "Mensagem do Sistema", MessageBoxButtons.YesNo, 
+               MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            
+            if (vresp == DialogResult.Yes)
+            {
+                int res = comm.ExecuteNonQuery();
+                MessageBox.Show("Registro excluído com sucesso." + res);
+            }
+            else{
+                MessageBox.Show("Não foi excluido.");
+            }           
+            Conexao.fecharConexao();
+        }
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            excluirPaciente(Convert.ToInt32(txtCodigo.Text));
         }
     }
 
