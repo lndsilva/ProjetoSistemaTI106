@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using MySql.Data.MySqlClient;
 
 namespace ConsultorioMedico
 {
@@ -27,6 +28,25 @@ namespace ConsultorioMedico
             InitializeComponent();
         }
 
+        public bool acessarSistema(string usuario, string senha)
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "select * from tbusuarios where nomeUsu = '"+usuario+"' and senhaUsu = '"+senha+"';";
+            comm.CommandType = CommandType.Text;
+            comm.Connection = Conexao.obterConexao();
+
+            MySqlDataReader DR;
+
+            DR = comm.ExecuteReader();
+
+            bool resposta = DR.HasRows;
+
+            Conexao.fecharConexao();
+
+            return resposta;
+        }
+
+
         private void btnEntrar_Click(object sender, EventArgs e)
         {
             string usuario, senha;
@@ -34,7 +54,9 @@ namespace ConsultorioMedico
             usuario = txtUsuario.Text;
             senha = txtSenha.Text;
 
-            if (usuario.Equals("senac") && senha.Equals("senac"))
+            bool validar = acessarSistema(usuario, senha);
+
+            if (validar)
             {
                 //Abrir outra janela
                 frmMenuPrincipal abrir = new frmMenuPrincipal();
