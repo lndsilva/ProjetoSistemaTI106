@@ -31,7 +31,7 @@ namespace ConsultorioMedico
         public bool acessarSistema(string usuario, string senha)
         {
             MySqlCommand comm = new MySqlCommand();
-            comm.CommandText = "select * from tbusuarios where nomeUsu = '"+usuario+"' and senhaUsu = '"+senha+"';";
+            comm.CommandText = "select * from tbusuarios where nomeUsu = '"+usuario+"' and senhaUsu = MD5('"+senha+"');";
             comm.CommandType = CommandType.Text;
             comm.Connection = Conexao.obterConexao();
 

@@ -70,7 +70,7 @@ namespace ConsultorioMedico
         {
             MySqlCommand comm = new MySqlCommand();
 
-            comm.CommandText = "insert into tbusuarios(nomeUsu,senhaUsu, codfunc)values(@nomeUsu,@senhaUsu, " + codigo + ");";
+            comm.CommandText = "insert into tbusuarios(nomeUsu,senhaUsu, codfunc)values(@nomeUsu,MD5('@senhaUsu'), " + codigo + ");";
             comm.CommandType = CommandType.Text;
 
             comm.Parameters.Clear();
